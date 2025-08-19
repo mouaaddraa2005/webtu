@@ -39,15 +39,15 @@ class _ProfileState extends State<Profile> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       CircleAvatar(
-                        backgroundImage: AssetImage('assets/me.jpg'),
+                        backgroundImage: AssetImage('assets/logo.png'),
                         radius: 30,
                       ),
                       SizedBox(width: 20),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Draa Mouaad', style: TextStyle(color: Colors.white,fontSize: 20, fontWeight: FontWeight.bold),),
-                          Text('University constantine\n2-abdelhamid mehri', style: TextStyle(color: Colors.white, fontSize: 15,fontWeight: FontWeight.bold),),
+                          Text('MD', style: TextStyle(color: Colors.white,fontSize: 20, fontWeight: FontWeight.bold),),
+                          Text('Mobile app development', style: TextStyle(color: Colors.white, fontSize: 18,fontWeight: FontWeight.bold),),
                         ],
                       ),
                       ]
@@ -88,7 +88,6 @@ class _ProfileState extends State<Profile> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text('Place of Birth', style: TextStyle(color: Color(0xFF009F77), fontSize: 20, fontWeight: FontWeight.bold),),
-                              Text('Constantine', style: TextStyle(color: Colors.black, fontSize: 15,fontWeight: FontWeight.bold),),
                             ],
                           ),
                         ]
@@ -106,7 +105,6 @@ class _ProfileState extends State<Profile> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text('Date of Birth', style: TextStyle(color: Color(0xFF009F77), fontSize: 20, fontWeight: FontWeight.bold),),
-                              Text('01/01/2000', style: TextStyle(color: Colors.black, fontSize: 15,fontWeight: FontWeight.bold),),
                             ],
                           ),
                         ]

@@ -27,12 +27,16 @@ class _ListState extends State<Home> {
       quote(
         text: 'Discharge',
         icon: Icon(Icons.file_copy_outlined, color: Colors.white),
-        onTap: () {},
+        onTap: () {
+          Navigator.pushNamed(context, '/discharge');
+        },
       ),
       quote(
         text: 'Timetable',
         icon: Icon(Icons.calendar_month, color: Colors.white),
-        onTap: () {},
+        onTap: () {
+          Navigator.pushNamed(context, '/timetable');
+        },
       ),
       quote(
         text: 'Group and Section',
@@ -113,7 +117,7 @@ class _ListState extends State<Home> {
                     children: [
                       Text('Student Portal', style: TextStyle(fontSize: 22, fontWeight: FontWeight.w700,fontFamily: 'Roboto'),),
                       CircleAvatar(
-                        backgroundImage: AssetImage('assets/me.jpg'),
+                        backgroundImage: AssetImage('assets/logo.png'),
                         radius: 20,
                       )
 

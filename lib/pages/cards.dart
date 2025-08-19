@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class Cards extends StatefulWidget {
   const Cards({super.key});
 
@@ -9,79 +8,104 @@ class Cards extends StatefulWidget {
 }
 
 class _CardsState extends State<Cards> {
+  Color buttonColor = Colors.red;
+  Color textColor = Colors.white;
+  bool showText = false;
+
+  void _onButtonTap() {
+    setState(() {
+      // Toggle button color
+      if (buttonColor == Colors.red) {
+        buttonColor = Colors.white;
+        textColor = Colors.black;
+      } else {
+        buttonColor = Colors.red;
+        textColor = Colors.white;
+      }
+
+      // Show "Follow for more" text
+      if(!showText){
+        showText = true;
+      }else{
+        showText = false;
+      }
+    });
+
+    // Optional: auto-hide after 3 seconds
+    Future.delayed(Duration(seconds: 3), () {
+      setState(() {
+        showText = false;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SafeArea(
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Container(
-                  padding: EdgeInsets.all(16.0),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(20),
-                    // make it rounded
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black26,
-                        blurRadius: 10,
-                        offset: Offset(2, 4),
-                      )
-                    ],
-                  ),
-
-                  child: Column(
-                      children: [
-                        SizedBox(height: 40),
-                        Text('To activate your student cards,please complete your registration by paying the outstandinding fees.', style: TextStyle(color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),),
-                        SizedBox(height: 40),
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Expanded(
-                                  child: Text('Please note that registration card activation following CCP transfer payments may take up to 24 hours due to processing times',
-                                    style: TextStyle(color: Colors.red[400], fontSize: 14, fontWeight: FontWeight.bold),
-                                    softWrap: true,
-                                  ),
-                              ),
-                              IconButton(onPressed: (){}, icon: Icon(Icons.campaign_outlined, color: Colors.red[400], size: 20,))
-                            ]
-                        ),
-                        SizedBox(height: 40),
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Expanded(
-                                child: Text('Please note that if you use Edhahabia card to pay registration fees,it may take up to one hour for your card to be activated',
-                                  style: TextStyle(color: Colors.red[400], fontSize: 14, fontWeight: FontWeight.bold),
-                                  softWrap: true,
-                                ),
-                              ),
-                              IconButton(onPressed: (){}, icon: Icon(Icons.campaign_outlined, color: Colors.red[400], size: 20,))
-                            ]
-                        ),
-                        SizedBox(height: 40),
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              IconButton(onPressed: (){}, icon: Icon(Icons.info_outline, color: Colors.green[600], size: 20,)),
-                              Expanded(
-                                child: Text('For the latest information, refresh your data by logging out and logging back in',
-                                  style: TextStyle(color: Colors.green[600], fontSize: 12, fontWeight: FontWeight.bold),
-                                  softWrap: true,
-                                ),
-                              ),
-                            ]
-                        ),
-                      ]
+      body: SafeArea(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Container(
+                padding: const EdgeInsets.all(16.0),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(20),
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Colors.black26,
+                      blurRadius: 10,
+                      offset: Offset(2, 4),
+                    ),
+                  ],
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Image.asset(
+                    'assets/mobile.jpg',
+                    fit: BoxFit.cover,
+                    height: 400,
+                    width: 300,
                   ),
                 ),
               ),
-            ],
-          ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(30.0),
+              child: ElevatedButton(
+                onPressed: _onButtonTap,
+                style: ElevatedButton.styleFrom(
+                  elevation: 20,
+                  shadowColor: Colors.black,
+                  backgroundColor: buttonColor,
+                  foregroundColor: textColor,
+                  minimumSize: const Size(double.infinity, 50),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30.0),
+                  ),
+                ),
+                child: const Text('Click here'),
+              ),
+            ),
+
+            /// 👇 Animated Text Section
+            AnimatedOpacity(
+              opacity: showText ? 1.0 : 0.0,
+              duration: const Duration(milliseconds: 500),
+              child: Text(
+                "Follow for more",
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                  fontFamily: 'Poppins',
+                ),
+              ),
+            ),
+          ],
         ),
+      ),
     );
   }
 }
